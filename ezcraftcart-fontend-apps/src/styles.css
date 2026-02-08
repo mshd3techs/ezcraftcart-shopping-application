@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* EzCraftCart - Pan-Asian Heritage Design System */
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-background text-foreground antialiased;
+        font-family: 'Inter', sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Playfair Display', serif;
+        @apply font-semibold tracking-tight;
+    }
+}
+
+@layer components {
+
+    /* Artisan gradient background */
+    .artisan-gradient {
+        background: linear-gradient(135deg,
+                hsla(8, 55%, 42%, 0.08) 0%,
+                hsla(38, 50%, 52%, 0.06) 50%,
+                hsla(160, 25%, 38%, 0.08) 100%);
+    }
+
+    /* Pan-Asian inspired geometric pattern */
+    .artisan-pattern {
+        background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238b4d3b' fill-opacity='0.06'%3E%3Cpath d='M20 0L40 20L20 40L0 20L20 0zm0 4L4 20l16 16 16-16L20 4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* Button styles */
+    .btn {
+        @apply inline-flex items-center justify-center rounded-md font-medium transition-all duration-200;
+        @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+        @apply disabled:pointer-events-none disabled:opacity-50;
+    }
+
+    .btn-primary {
+        @apply btn bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3;
+    }
+
+    .btn-secondary {
+        @apply btn bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-3;
+    }
+
+    .btn-outline {
+        @apply btn border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3;
+    }
+
+    .btn-ghost {
+        @apply btn hover:bg-muted px-4 py-2;
+    }
+
+    /* Card styles */
+    .card {
+        @apply bg-card rounded-lg border border-border shadow-sm;
+    }
+
+    .card-hover {
+        @apply card transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+    }
+
+    /* Input styles */
+    .input {
+        @apply w-full rounded-md border border-input bg-background px-4 py-2;
+        @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1;
+        @apply placeholder:text-muted-foreground;
+    }
+
+    /* Badge styles */
+    .badge {
+        @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-medium;
+    }
+
+    .badge-primary {
+        @apply badge bg-primary/10 text-primary;
+    }
+
+    .badge-accent {
+        @apply badge bg-accent/10 text-accent;
+    }
+
+    /* Container */
+    .container-custom {
+        @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+    }
+
+    /* Text balance */
+    .text-balance {
+        text-wrap: balance;
+    }
+
+    /* Rating stars */
+    .star-filled {
+        @apply text-accent;
+    }
+
+    .star-empty {
+        @apply text-muted;
+    }
+
+    /* Overlay */
+    .overlay {
+        @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-40;
+    }
+
+    /* Drawer */
+    .drawer {
+        @apply fixed top-0 right-0 h-full w-full max-w-md bg-background shadow-xl z-50;
+        @apply transform transition-transform duration-300 ease-in-out;
+    }
+
+    .drawer-open {
+        @apply translate-x-0;
+    }
+
+    .drawer-closed {
+        @apply translate-x-full;
+    }
+
+    /* Skeleton loading */
+    .skeleton {
+        @apply animate-pulse bg-muted rounded;
+    }
+}
+
+@layer utilities {
+    .animate-fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    .animate-slide-up {
+        animation: slideUp 0.5s ease-out forwards;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-muted;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+}

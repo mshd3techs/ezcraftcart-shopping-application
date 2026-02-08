@@ -1,0 +1,25 @@
+
+<svg width="720" height="200" viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .primary { fill:#7A4A2E; }
+      .secondary { fill:#B36A3C; }
+      .accent { fill:#D8B58A; }
+      .neutral { fill:#F3ECDC; }
+      text { font-family: 'Inter', 'Noto Sans', Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Bag -->
+  <rect x="20" y="40" width="120" height="120" rx="14" class="accent"/>
+  <rect x="32" y="52" width="96" height="96" rx="10" class="neutral"/>
+
+  <!-- EZ -->
+  <text x="55" y="120" font-size="56" font-weight="700" class="primary">E</text>
+  <text x="82" y="128" font-size="68" font-weight="700" class="primary">Z</text>
+
+  <!-- Brand Text -->
+  <text x="170" y="118" font-size="56" font-weight="600" class="primary">Ez</text>
+  <text x="230" y="118" font-size="56" font-weight="600" class="secondary">Craft</text>
+  <text x="365" y="118" font-size="56" font-weight="600" class="accent">Cart</text>
+</svg>
