@@ -12,6 +12,7 @@
     </parent>
 
     <artifactId>ezcraftcart-payment-shipping</artifactId>
+    <packaging>jar</packaging>
     <name>EzCraftCart Payment and Shipping</name>
     <description>Payment intents, Stripe integration, webhooks, shipping and fulfillment management</description>
 

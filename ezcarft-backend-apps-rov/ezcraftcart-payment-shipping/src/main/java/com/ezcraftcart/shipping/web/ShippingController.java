@@ -1,8 +1,8 @@
 package com.ezcraftcart.shipping.web;
 
 import com.ezcraftcart.shipping.domain.Shipment;
+import com.ezcraftcart.shipping.domain.ShipmentRequest;
 import com.ezcraftcart.shipping.domain.ShipmentStatus;
-import com.ezcraftcart.shipping.service.ShipmentRequest;
 import com.ezcraftcart.shipping.service.ShippingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

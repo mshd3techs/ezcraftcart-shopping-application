@@ -1,10 +1,10 @@
-export interface Product {
+﻿export interface Product {
     id: string;
     name: string;
     description: string;
     price: number;
     originalPrice?: number;
-    category: 'ceramic' | 'wooden' | 'earth' | 'scented-oils' | 'metal' | 'pots';
+    category: 'ceramic' | 'wooden' | 'earth' | 'scented-oils' | 'metal' | 'pots' | 'perfumes';
     subcategory: string;
     images: string[];
     rating: number;

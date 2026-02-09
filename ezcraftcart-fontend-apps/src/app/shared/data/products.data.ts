@@ -1,4 +1,4 @@
-import { Category, Product } from '../models/product.model';
+﻿import { Category, Product } from '../models/product.model';
 
 export const categories: Category[] = [
     {
@@ -48,6 +48,14 @@ export const categories: Category[] = [
         description: 'Decorative pots and garden planters',
         image: 'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=600&h=400&fit=crop',
         productCount: 112,
+    },
+    {
+        id: '7',
+        name: 'Perfumes',
+        slug: 'perfumes',
+        description: 'Artisan fragrances and luxury perfumes',
+        image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&h=400&fit=crop',
+        productCount: 95,
     },
 ];
 
