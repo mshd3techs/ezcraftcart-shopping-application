@@ -1,12 +1,13 @@
 ﻿package com.ezcraftcart.notification.service;
 
-import com.ezcraftcart.notification.event.OrderEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
+import com.ezcraftcart.notification.event.OrderEvent;
 
 @Service
 @RequiredArgsConstructor
@@ -38,7 +39,7 @@ public class NotificationService {
                 "Dear %s,\n\n" +
                 "Thank you for your order!\n\n" +
                 "Order Number: %d\n" +
-                "Total Amount: \$%.2f\n\n" +
+                "Total Amount: \\$%.2f\n\n" +
                 "We will send you another email when your order is shipped.\n\n" +
                 "Best regards,\n" +
                 "EzCraftCart Team",
@@ -63,7 +64,7 @@ public class NotificationService {
                 "Dear %s,\n\n" +
                 "Your payment has been confirmed!\n\n" +
                 "Order Number: %d\n" +
-                "Amount Paid: \$%.2f\n\n" +
+                "Amount Paid: \\$%.2f\n\n" +
                 "Your order is being prepared for shipment.\n\n" +
                 "Best regards,\n" +
                 "EzCraftCart Team",
@@ -136,7 +137,7 @@ public class NotificationService {
                 "Dear %s,\n\n" +
                 "Your order has been cancelled.\n\n" +
                 "Order Number: %d\n" +
-                "Amount: \$%.2f\n\n" +
+                "Amount: \\$%.2f\n\n" +
                 "If you have any questions, please contact our support team.\n\n" +
                 "Best regards,\n" +
                 "EzCraftCart Team",

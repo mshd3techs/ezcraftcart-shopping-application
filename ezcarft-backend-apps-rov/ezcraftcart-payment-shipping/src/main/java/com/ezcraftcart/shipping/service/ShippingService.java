@@ -1,6 +1,8 @@
 package com.ezcraftcart.shipping.service;
 
 import com.ezcraftcart.shipping.domain.*;
+
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -109,11 +111,4 @@ public class ShippingService {
     }
 }
 
-@lombok.Data public class ShipmentRequest {
-    private Long orderId;
-    private String recipientName;
-    private String recipientEmail;
-    private String recipientPhone;
-    private Address shippingAddress;
-    private ShippingMethod shippingMethod;
-}
+

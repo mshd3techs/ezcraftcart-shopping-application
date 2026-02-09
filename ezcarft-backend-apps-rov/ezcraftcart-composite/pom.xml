@@ -8,7 +8,7 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
   <artifactId>ezcraftcart-composite</artifactId>
-  <name>EzCraftCart Composite Application</name>
+  <name>EzCraftCart Application</name>
   <description>Main application bundling all microservices</description>
   <packaging>jar</packaging>
   <dependencies>
@@ -16,18 +16,22 @@
     <dependency>
       <groupId>com.ezcraftcart</groupId>
       <artifactId>ezcraftcart-common</artifactId>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>com.ezcraftcart</groupId>
       <artifactId>ezcraftcart-core</artifactId>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>com.ezcraftcart</groupId>
       <artifactId>ezcraftcart-identity</artifactId>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>com.ezcraftcart</groupId>
       <artifactId>ezcraftcart-cms</artifactId>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
         <groupId>com.ezcraftcart</groupId>

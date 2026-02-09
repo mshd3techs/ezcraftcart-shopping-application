@@ -1,14 +1,15 @@
 package com.ezcraftcart.config;
 
-import com.ezcraftcart.catalog.domain.Category;
-import com.ezcraftcart.catalog.domain.Product;
-import com.ezcraftcart.catalog.repository.CategoryRepository;
-import com.ezcraftcart.catalog.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.ezcraftcart.core.catalog.domain.Category;
+import com.ezcraftcart.core.catalog.domain.Product;
+import com.ezcraftcart.core.catalog.repository.CategoryRepository;
+import com.ezcraftcart.core.catalog.repository.ProductRepository;
 
 import java.math.BigDecimal;
 import java.util.List;
