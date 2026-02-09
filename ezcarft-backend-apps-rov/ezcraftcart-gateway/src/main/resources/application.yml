@@ -1,0 +1,151 @@
+﻿spring:
+  application:
+    name: ezcraftcart-gateway
+  cloud:
+    gateway:
+      routes:
+        # Catalog Service Routes
+        - id: catalog-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/v1/catalog/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: catalogCircuitBreaker
+                fallbackUri: forward:/fallback/catalog
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 100
+                redis-rate-limiter.burstCapacity: 200
+        
+        # Identity Service Routes
+        - id: identity-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/v1/auth/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
+        
+        # Cart Service Routes
+        - id: cart-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/v1/cart/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: cartCircuitBreaker
+        
+        # Order Service Routes
+        - id: order-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/v1/orders/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: orderCircuitBreaker
+        
+        # Payment Service Routes
+        - id: payment-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/v1/payments/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: paymentCircuitBreaker
+        
+        # CMS Service Routes
+        - id: cms-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/v1/cms/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: cmsCircuitBreaker
+        
+        # Inventory Service Routes
+        - id: inventory-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/v1/inventory/**
+        
+        # Shipping Service Routes
+        - id: shipping-service
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/v1/shipping/**
+      
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+        - AddResponseHeader=X-Response-Time, \
+      
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:4200"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,gateway
+  endpoint:
+    health:
+      show-details: always
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      catalogCircuitBreaker:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+      cartCircuitBreaker:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+      orderCircuitBreaker:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+      paymentCircuitBreaker:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+      cmsCircuitBreaker:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty: INFO

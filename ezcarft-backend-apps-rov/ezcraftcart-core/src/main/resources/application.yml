@@ -1,0 +1,71 @@
+﻿spring:
+  application:
+    name: ezcraftcart-core-service
+  
+  datasource:
+    url: jdbc:h2:mem:ezcraftcart
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+  
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 2000ms
+  
+  cache:
+    type: redis
+    redis:
+      time-to-live: 600000
+      cache-null-values: false
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+server:
+  port: 8082
+
+logging:
+  level:
+    com.ezcraftcart: DEBUG
+    org.springframework.web: INFO
+    org.hibernate: INFO
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      inventoryService:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+  
+  retry:
+    instances:
+      inventory:
+        maxAttempts: 3
+        waitDuration: 1000
+        retryExceptions:
+          - org.springframework.dao.DataAccessException

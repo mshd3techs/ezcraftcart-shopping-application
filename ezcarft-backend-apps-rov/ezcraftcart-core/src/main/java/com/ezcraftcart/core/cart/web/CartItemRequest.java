@@ -1,0 +1,16 @@
+package com.ezcraftcart.core.cart.web;
+
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+
+@Data
+public class CartItemRequest {
+
+    @NotBlank
+    private String productId;
+
+    @Min(1)
+    private int quantity = 1;
+}
+
